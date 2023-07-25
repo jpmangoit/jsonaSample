@@ -59,7 +59,7 @@
                                     <owl-carousel-o [options]="sliderOptions">
                                         <ng-template carouselSlide *ngFor="let item of bannerData; let i=index">
                                             <div class="news-widget com-g-widget">
-                                                <a [href]="item.redirectLink" target="_blank" (click)="onClickBanner(item.id)">
+                                                <a [href]="item.redirectLink" target="_blank" >
                                                     <div class="news-image" [ngClass]="item.banner_image[0]?.banner_image == null ?'no_image' : ''">
                                                         <img onContextMenu="return false;" [src]="item.banner_image[0]?.banner_image!= null? item.banner_image[0]?.banner_image: '../../assets/img/no_image.png'"
                                                             alt="{{item.bannerName }}" loading="lazy" />

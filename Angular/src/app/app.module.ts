@@ -43,29 +43,10 @@ import { MatExpansionModule} from '@angular/material/expansion';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 
 import { LoginComponent } from './pages/login/login.component';
-import { DashboardComponent } from './member/dashboard/dashboard.component';
-import { HeaderComponent } from './common/header/header.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
-import { MenuComponent } from './common/menu/menu.component';
-import { LayoutComponent } from './common/layout/layout.component';
 import { ClubNewsComponent } from './member/news/club-news/club-news.component';
-import { ClubNewsDetailsComponent } from './member/news/club-news-details/club-news-details.component';
-import { ClubDatesComponent } from './member/club-dates/club-dates.component';
-import { ClubEventsComponent } from './member/events/club-events/club-events.component';
-import { ClubAppointmentsComponent } from './member/club-appointments/club-appointments.component';
 import { AuthServiceService } from './service/auth-service.service';
 import { ClubWallComponent } from './member/club-wall/club-wall.component';
-import { GroupNewsComponent } from './member/news/group-news/group-news.component';
-import { BirthdaysComponent } from './member/birthdays/birthdays.component';
-import { DashboardEventComponent } from './member/events/dashboard-event/dashboard-event.component';
-import { OrganizerEventComponent } from './member/events/organizer-event/organizer-event.component';
-
-// import { ProfileViewComponent } from './member/profiles/profile-view/profile-view.component';
-import { ImageViewerComponent } from './member/image-viewer/image-viewer.component';
-import { EventDetailComponent } from './member/events/event-detail/event-detail.component';
-
-// import { AllDocumentsComponent } from './member/documents/all-documents/all-documents.component';
-
 
 
 import { MatMenuModule } from '@angular/material/menu';
@@ -90,7 +71,6 @@ import { NgxImageCompressService } from 'ngx-image-compress';
 import { LazyImgDirective } from './lazyimg.directive';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { NgChartsModule } from 'ng2-charts';
-import { EventsCalendarComponent } from './member/events/events-calendar/events-calendar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -145,33 +125,17 @@ FullCalendarModule.registerPlugins([
 	declarations: [
 		AppComponent,
 		LoginComponent,
-		DashboardComponent,
-		HeaderComponent,
 		PageNotFoundComponent,
-		MenuComponent,
-		LayoutComponent,
 		ClubNewsComponent,
-
-		ClubNewsDetailsComponent,
-		ClubDatesComponent,
-		ClubEventsComponent,
-		ClubAppointmentsComponent,
 		ClubWallComponent,
-		GroupNewsComponent,
-		BirthdaysComponent,
 		LimitTextPipe,
-		DashboardEventComponent,
-		OrganizerEventComponent,
 		ConfirmDialogComponent,
         UpdateConfirmDialogComponent,
-		ImageViewerComponent,
-		EventDetailComponent,
 		TooltipDirective,		
         ShortNumberPipe,
         DenyReasonConfirmDialogComponent,
         ComingSoonComponent,
 		LazyImgDirective,
-        EventsCalendarComponent,
 	],
 	imports: [
 		BrowserModule,
