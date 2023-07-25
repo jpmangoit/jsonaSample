@@ -4,12 +4,8 @@ import { AuthGuard } from './guard/auth.guard';
 import { LayoutComponent } from './common/layout/layout.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 import { ClubWallComponent } from './member/club-wall/club-wall.component';
-import { ClubNewsDetailsComponent } from './member/news/club-news-details/club-news-details.component';
-import { DashboardComponent } from './member/dashboard/dashboard.component';
-
 import { LoginComponent } from './pages/login/login.component';
 
-import { EventDetailComponent } from './member/events/event-detail/event-detail.component';
 
 import { ClubNewsComponent } from './member/news/club-news/club-news.component';
 import { ClubDatesComponent } from './member/club-dates/club-dates.component';
@@ -19,11 +15,8 @@ import { MembersGuard } from './guard/members.guard';
 import { ClubEventsComponent } from './member/events/club-events/club-events.component';
 import { ApplicationstateService } from './service/applicationstate.service';
 
-
-import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
 import { MemberLightGuard } from './guard/member-light.guard';
 
-import { EventsCalendarComponent } from './member/events/events-calendar/events-calendar.component';
 var userDetails = JSON.parse(localStorage.getItem('user-data'));
 
 const desktop_routes: Routes = [
@@ -47,11 +40,6 @@ const desktop_routes: Routes = [
                     { path: 'club-events', component: ClubEventsComponent }
                 ]
             },           
-            { path: 'clubnews-detail/:newsid', component: ClubNewsDetailsComponent, canActivate: [MemberLightGuard], data: { title: 'News', allow_permission: ['participate'] } },
-            { path: 'event-detail/:eventid', component: EventDetailComponent, canActivate: [MemberLightGuard], data: { title: 'Event Detail', allow_permission: ['participate'] } },
-            { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
-            { path: 'coming_soon', component: ComingSoonComponent },
-            { path: 'event-calendar', component: EventsCalendarComponent },
         ]
     },
     {
