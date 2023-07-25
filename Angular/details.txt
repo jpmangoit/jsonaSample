@@ -1,0 +1,114 @@
+
+Reference sites
+1. https://www.djamware.com/post/5bca67d780aca7466989441f/angular-7-tutorial-building-crud-web-application
+2. https://angular.io/tutorial
+3. https://www.tutorialspoint.com/angularjs/index.htm
+
+Host : 94.237.3.78
+Port : 22
+User : mangodev
+password : King@12#Queen
+
+-------------------------------------------------------------
+ssh root@94.237.64.209
+94.237.64.209
+Usename: root
+Password: Mangoit@12#
+
+-------------------------------------------------------------
+DataBase Credential :
+Host : 94.237.3.78
+Username : mangoit
+Password : P@ssw0rd
+
+----------------------------------========================--------------------------
+Client Node repository
+https://bitbucket.org/fehmicitaku/tineon/src/master/
+
+---------------------------------========================-----------------------------
+
+Spreadsheet for Tineon-
+https://docs.google.com/spreadsheets/d/1cXvtVVeIyQIWx2GvTVCWzimuEXrk8fQFlJKn4ET13BQ/edit?usp=sharing
+
+---------------------------------========================-----------------------------
+
+Design
+https://www.figma.com/file/9TENjxOKmLz7IOcqpq2Uii/Club-Management?node-id=30%3A17949
+
+yash.pradhan@mangoitsolutions.in
+yash@figma
+
+---------------------========================--------------------------
+
+Icons in Angular - https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
+
+---------------------========================--------------------------
+YT playlist
+
+https://www.youtube.com/watch?v=s3qZF4jhgDo&list=PLYxzS__5yYQmX2bItSRCqwiQZn5dIL1gt
+
+https://www.youtube.com/watch?v=X-vjBas_pTU&list=PLsjmv9aDmNDAN5adZxbGTlQHlgU2je7KE&index=1
+
+Cookie / Local / Session Storage - https://youtu.be/FKPfiQQz5hY
+Route Guard - https://youtu.be/7L80dKtfHe0
+
+---------------------========================--------------------------
+
+https://www.youtube.com/watch?v=Fdf5aTYRW0E
+
+---------------------========================--------------------------
+Sheet sir-
+https://docs.google.com/spreadsheets/d/12psy3yY57eE0STwRk2YZEel4OjjNBZRT8rNyOB5qPIo/edit?usp=sharing
+
+Task list
+https://docs.google.com/spreadsheets/d/1_BLj7N2Au1mrJoaj4huFQQ1LcRIZnnJ3nZRsCecLBqE/edit?usp=sharing
+---------------------========================--------------------------
+npm install -g @angular/cli  - Installs the Angular CLI on your system
+
+ng new my-project-name - Creates a new Angular project
+
+ng serve - Command to compile the project
+
+---------------------========================--------------------------
+24/05/2021
+
+1. Created a new project for Tineon, via "ng new project-name".
+2. Added the Material package to the project, via "ng add @angular/material".
+3. Created a structure -
+    3.1. Pages - Components for non-loggedIn users.
+    3.2. Member - Components for loggedIn users.
+    3.3. Common - Components such as Header, Footer, PageNotFound.
+*PageNotFound - Component created for 404 pages, here at the app-routing pages created a path '**',
+where '**' means Wild Card Routing- when none of the route matches then the angular automatically routed to this path.
+
+---------------------========================--------------------------
+24/05/2021
+Today's report-
+Today I have worked on the Login and Dashboard pages. These pages are created by Angular where we are still working on the Dashboard page. 
+As you can see here - https://www.awesomescreenshot.com/image/8591711?key=0d95074645451555553a253abc74d0de
+
+I still have some queries for the pages I have worked on-
+1. Please share the design for the "Sign up / Registration page" and "Recover Password page".
+2. Is there be any way via which the Recovery email will be sent, If there please let us know. Or if we have to create such functionality then please share the SMTP details for it.
+3. Will there be any verification email for the registered user?
+4. Also please share the email content for every email that will be triggered.
+5.On the Dashboard page, search functionality is given as per the design, so here what can a user search for?
+6. Near the search bar there is an "+" icon(https://www.awesomescreenshot.com/image/8592211?key=19591ff32cc07f34880adb571e1477ba). So here what can the user create here?
+
+Thanks,
+Yash 
+
+---------------------========================--------------------------
+25/05/2021
+Today's report-
+Today's update worked on the structure of Dashboard in angular.
+Status: (100%)
+The linking of Node API on the Login page is in a working state as facing some issues.
+Status (75%): Working
+
+will work on tomorrow:
+Complete the Node integration of Login and Dashboard
+Create the structure of the Club Wall page.
+
+---------------------========================--------------------------
+26/05/2021

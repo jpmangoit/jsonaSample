@@ -1,0 +1,13 @@
+.overlay  {
+    width: calc(100% - 106px);
+}
+@media only screen and (max-width: 990px){
+.overlay  {
+    width: 100%;
+}
+}
+@media only screen and (min-width: 991px) and (max-width: 1480px){
+.overlay  {
+    width: calc(100% - 106px);
+}
+}

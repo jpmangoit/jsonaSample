@@ -1,0 +1,33 @@
+<ng-container *ngIf="setTheme && setTheme.sidebar_color">
+    <div class="wrapper">
+        <div class="mobile-component">
+            <div class="mobile-header-bar">
+                <app-m-header></app-m-header>
+            </div>
+            <div class="footer-toolbar">
+                <app-navigation-tool></app-navigation-tool>
+            </div>
+        </div>
+        <!-- <div class="wrapper"> -->
+        <app-push-notification *ngIf="!userDetails.isMember_light && !userDetails.isMember_light_admin"></app-push-notification>
+        <app-menu></app-menu>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <app-header></app-header>
+            <!-- End Navbar -->
+
+            <!-- Main content -->
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+            <!-- Main content ENDS -->
+        </div>
+    </div>
+</ng-container>
+<div *ngIf="authService.showLoader">
+    <div class="overlay">
+        <div class="overlay__inner">
+            <div class="overlay__content"><span class="spinner"></span></div>
+        </div>
+    </div>
+</div>

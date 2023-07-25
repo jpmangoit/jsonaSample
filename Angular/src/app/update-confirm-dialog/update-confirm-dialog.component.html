@@ -1,0 +1,39 @@
+<div *ngIf="message" class="modal" tabindex="-1" role="dialog" style="display:block!important">
+    <div class="modal-dialog modal-dialog-centered custom-alert" role="document">
+        <div class="modal-content">
+            <form [formGroup]="updateForm">
+            <div *ngIf="message?.type == 'confirm'" class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-center confirm-message">{{message.text}}</p>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="event_field">
+                            <label>Message</label>
+                            <textarea class="form-control" id="message-text" formControlName="reason" [ngClass]="{ 'is-invalid': submitted && updateForm.controls.reason.errors }"></textarea>
+                            <div *ngIf="(updateForm.controls.reason.touched || submitted)&& updateForm.controls.reason.errors?.required" class="text-danger">
+                                <div *ngIf="updateForm.controls.reason.errors.required">
+                                    {{language.error_message.common_required}}
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="confirm-button">
+                            <a class="mr-2" >
+                                <button  (click)="message.yesFn()" class="btn btn-yes">{{language.button.yes}}</button>
+                            </a>
+                            <a (click)="message.noFn()">
+                                <button class="btn btn-no">{{language.button.no}}</button>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

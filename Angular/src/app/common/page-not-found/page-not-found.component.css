@@ -1,0 +1,38 @@
+.not-found-main {
+        background: url(../../../assets/img/login-bg.png) no-repeat #273255;
+        background-position: bottom;
+        margin-bottom: 0px !important;
+        height: 100vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+.four_04_text {
+    font-size: 15rem;
+    font-family: 'Gellix', sans-serif;
+    color: #fff;
+    line-height: 1;
+}
+.not-exist {
+    font-size: 34px;
+    color: #fff;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+.back_btn_home button {
+    border: 2px solid #fff;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 25px;
+    background: #4fb96d;
+    color: #fff;
+}
+@media only screen and (max-width: 767px){
+  .four_04_text {
+    font-size: 6rem;
+}
+.not-exist {
+    font-size: 16px;
+}
+}

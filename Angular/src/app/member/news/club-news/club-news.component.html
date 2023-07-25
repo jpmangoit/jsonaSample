@@ -1,0 +1,201 @@
+<!-- club news top widget start -->
+<div class="row">
+    <div class="col-md-12 club_widget">
+        <div class="card ">
+            <div class="card-header ">
+                <h5 class="card-title" *ngIf="headline_word_option == 0">{{language.dashboard.dashboardNewsTitle_stand}}</h5>
+                <h5 class="card-title" *ngIf="headline_word_option == 1">{{language.dashboard.dashboardNewsTitle_untern}}</h5>
+            </div>
+            <div class="card-body">
+                <div class="dash-news" (onLoad)="getAllNews()">
+                        <div class="empty-data-image" *ngIf="newsTop4Result?.length == 0">
+                            <img onContextMenu="return false;"  src="assets/img/no-news-img.png" alt="{{language.group_news.no_news}}" loading="lazy"><br>
+                            <span>{{language.group_news.no_news}}</span>
+                        </div>
+                        <ng-container *ngFor='let data of newsTop4Result; let i=index'>
+                            <div class="news-item large-item" *ngIf="i < 1">
+                                <div class="news-item-image" data-bs-toggle="modal" data-bs-target="#exModal" (click)="getNewsDetails(data.id)">
+                                    <img onContextMenu="return false;" [src]="data.imageUrls != null ? data.imageUrls: '../../../../assets/img/new-design/dashboard/news-lg-img.png'" alt="" loading="lazy">
+                                </div>
+                                <div class="news-item-content">
+                                    <div class="news-top-content">
+                                        <span *ngIf="data.audience == '0'" class="news-badge">{{language.create_news.title}}</span>
+                                        <span *ngIf="data.audience == '2'" class="news-badge-group">{{language.create_news.group_news}}</span>
+                                        <span *ngIf="data.audience == '3'" class="news-badge-chairman">{{language.create_news.chairman}}</span>
+                                        <span class="news-date">
+                                            <img onContextMenu="return false;"  src="../../../../assets/img/new-design/dashboard/gray-clock.svg" alt="" loading="lazy">&nbsp;
+                                            {{data.created_at | date: 'd. MMMM y'}}
+                                        </span>
+                                    </div>
+                                    <div class="news-description">
+                                        <h5 data-bs-toggle="modal" data-bs-target="#exModal" (click)="getNewsDetails(data.id)">{{data.title}}</h5>
+                                        <div class="news-summery">
+                                            <p [innerHTML]="(data.text.length > 0 )? (data.text | slice:0:500)+'...':(data.text)"> </p>
+                                        </div>
+                                    </div>
+                                    <div class="news-footer">
+                                        <div class="news-author">
+                                            <img onContextMenu="return false;" [src]="data.user.image  != null ? data.user.image : 'assets/img/defaultProfile.jpeg'" alt="{{data?.user?.firstname}}" loading="lazy">
+                                            <div class="author-des">
+                                                <Span>{{language.dashboard.dashboardNewsAuthor}}<br>
+                                                    <strong> {{data.user.firstname}} {{data.user.lastname}} </strong>
+                                                </Span>
+                                                <span class="author-status" *ngIf="data.approved_status == 0  && !data.deny_by_id">{{language.theme.status}}:-{{language.community_groups.wait_admin_approve}}</span>
+                                                <span class="deny-reason" *ngIf="data.approved_status == 0 && data.deny_by_id">{{language.theme.status}}:-{{language.community_groups.admin_deny}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="news-read-more" data-bs-toggle="modal" data-bs-target="#exModal"
+                                            (click)="getNewsDetails(data.id)">
+                                            <a>{{language.dashboard.dashboardNewsContent}}<span><img onContextMenu="return false;"
+                                                        src="../../../../assets/img/new-design/dashboard/read-more-ic.svg" alt="" loading="lazy"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <div class="news-item multi-item">
+                            <div class="dashboard-slider" *ngIf="newsTop4Result?.length > 0 || bannerData?.length > 0">
+                                <div class="multi-item-carousel" *ngIf="bannerData?.length > 0 && allowAdvertisment == 0">
+                                    <owl-carousel-o [options]="sliderOptions">
+                                        <ng-template carouselSlide *ngFor="let item of bannerData; let i=index">
+                                            <div class="news-widget com-g-widget">
+                                                <a [href]="item.redirectLink" target="_blank" (click)="onClickBanner(item.id)">
+                                                    <div class="news-image" [ngClass]="item.banner_image[0]?.banner_image == null ?'no_image' : ''">
+                                                        <img onContextMenu="return false;" [src]="item.banner_image[0]?.banner_image!= null? item.banner_image[0]?.banner_image: '../../assets/img/no_image.png'"
+                                                            alt="{{item.bannerName }}" loading="lazy" />
+                                                    </div>
+                                                    <div class="news-content">
+                                                        <div class="car-badge">
+                                                            <span class="carousel-badge-2 two">{{language.banner.advertisment}}</span>
+                                                        </div>
+                                                        <h5
+                                                            [innerHTML]="item.bannerName.length> 0 ?(item.bannerName | slice : 0 : 30) + '...' : item.bannerName">
+                                                        </h5>
+                                                        <p
+                                                            [innerHTML]="item.description.length> 0 ?(item.description | slice : 0 : 30) + '...' : item.description">
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </ng-template>
+                                    </owl-carousel-o>
+                                </div>
+                                <ng-container *ngFor='let data of newsTop4Result; let i=index'>
+                                    <div class="multi-item-single" *ngIf="i >= 1 && i <= newsDisplay" data-bs-toggle="modal" data-bs-target="#exModal" (click)="getNewsDetails(data.id)">
+                                        <div class="news-item-image" [ngClass]="data.imageUrls == null ? 'no_image' : ''">
+                                            <img onContextMenu="return false;" [src]="data.imageUrls != null ? data.imageUrls: '../../../../assets/img/new-design/dashboard/news-lg-img.png'" alt="" loading="lazy">
+                                        </div>
+                                        <div class="news-item-content">
+                                            <div class="news-top-content">
+                                                <span *ngIf="data.audience == '0'" class="news-badge">{{language.create_news.title}}</span>
+                                                <span *ngIf="data.audience == '2'" class="news-badge-group">{{language.create_news.group_news}}</span>
+                                                <span *ngIf="data.audience == '3'" class="news-badge-chairman">{{language.create_news.chairman}}</span>
+                                                <span class="news-date">
+                                                    <img onContextMenu="return false;"
+                                                        src="../../../../assets/img/new-design/dashboard/gray-clock.svg" alt="" loading="lazy">&nbsp;
+                                                    {{data.created_at | date: 'd. MMMM y'}}
+                                                </span>
+                                            </div>
+                                            <div class="news-description">
+                                                <h5>{{data.title}}</h5>
+                                                <p
+                                                    [innerHTML]="(data.text.length > 0 )? (data.text | slice:0:200)+'...':(data.text)">
+                                                </p>
+                                            </div>
+                                            <div class="news-footer">
+                                                <div class="news-author">
+                                                    <img onContextMenu="return false;" [src]="data.user.image != null ? data.user.image : 'assets/img/defaultProfile.jpeg'" alt="{{data?.user?.firstname}}" loading="lazy">
+                                                    <div class="author-des">
+                                                        <span>{{language.dashboard.dashboardNewsAuthor}}<br><strong>{{data.user.firstname}} {{data.user.lastname}}</strong></span>
+                                                        <span class="author-status" *ngIf="data.approved_status == 0  && !data.deny_by_id">{{language.theme.status}}:-{{language.community_groups.wait_admin_approve}}</span>
+                                                        <span class="deny-reason" *ngIf="data.approved_status == 0 && data.deny_by_id">{{language.theme.status}}:-{{language.community_groups.admin_deny}}</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="news-read-more" data-bs-toggle="modal" data-bs-target="#exModal" (click)="getNewsDetails(data.id)">
+                                                    <a>{{language.dashboard.dashboardNewsContent}}<span>
+                                                        <img onContextMenu="return false;" src="../../../../assets/img/new-design/dashboard/read-more-ic.svg" alt="" loading="lazy">
+                                                      </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- club news top widget start -->
+<!-- club wall bottom widget start -->
+
+<div class="modal fade change_pass_section news_detail_popup all_news" id="exModal" tabindex="-1"
+    aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>{{language.club_news.clubNewsDetails}}</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <path
+                            d="M32 3.72111L28.2789 0L16 12.2789L3.72111 0L0 3.72111L12.2789 16L0 28.2789L3.72111 32L16 19.7211L28.2789 32L32 28.2789L19.7211 16L32 3.72111Z"
+                            fill="#98A5C6" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="n-detail-main">
+                    <div class="news_details_main">
+                        <div class="row">
+                            <div class="col-md-12 news_detail_inner">
+                                <!-- <div class="card"> -->
+                                    <div class="card-body">
+                                        <!-- news details data start -->
+                                        <div class="news_details" *ngIf="newsResult">
+                                            <!-- <div class=""> -->
+                                            <div class="news_content col-md-12">
+                                                <div class="news_image">
+                                                    <div class="news_image_container" (click)="viewImage = true">
+                                                        <img  class="image_news" onContextMenu="return false;" [src]="newImg">
+                                                    </div>
+                                                </div>
+                                                    <!--Remove the tag-->
+                                                    <div class="news_heading">
+                                                        <h2>{{newsResult.title}}</h2>
+                                                    </div>
+                                                    <div class="news_content_text" [innerHTML]="newsResult.text">...<a
+                                                            href="#">{{language.dashboard.dashboardNewsContent}}</a>
+                                                    </div>
+                                                    <div class="author-info">
+                                                        <div class="author-img">
+                                                            <img onContextMenu="return false;" [src]="thumbnail != null && thumbnail != '' ? thumbnail : 'assets/img/defaultProfile.jpeg'" alt="" loading="lazy" style="width: 100px;">
+                                                        </div>
+                                                        <div class="author-des">
+                                                            <span class="author-id">
+                                                                {{language.dashboard.dashboardNewsAuthor}}
+                                                                {{newsResult?.user?.firstname}} {{newsResult?.user?.lastname}}
+                                                            </span>
+                                                            <span class="author-date">{{newsResult.created_at | date: 'd. MMMM y'}}</span>    
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <button type="button" (click)="sendDecodeData()">
+                                                            <Span>Convert Deserialize to serialize data in Console </Span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- news details data End -->
+                                    </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

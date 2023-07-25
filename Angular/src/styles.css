@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+
+.mat-body,
+.mat-body-1,
+.mat-typography{
+  font-family: "Gellix", sans-serif !important;
+}
+
+.toast-top-right {
+    top: 73px !important;
+    right: 20px !important;
+}
+.toast-container .ngx-toastr {
+    height: auto !important;
+    padding: 31px 50px !important;
+    min-width: 300px;
+    width: auto;
+    line-height: 20px;
+}
+.toast-close-button {
+    top: 0;
+}
+
+.page-action {
+    justify-content: space-between;
+}
+
+::ng-deep .carousel-badge-2.two {
+    background: #e7345d !important;
+    right:11px !important
+}
+
+
+::ng-deep body .overimage-bar{
+   flex: 0 0 320px !important;
+}
+
+::ng-deep  body .mat-body, ::ng-deep  body .mat-body-1, ::ng-deep  body .mat-typography .mat-body, ::ng-deep  body .mat-typography .mat-body-1, ::ng-deep  body .mat-typography {
+    font-family: "Gellix", sans-serif !important;
+}
+
+::ng-deep .mat-body, ::ng-deep .mat-body-1, ::ng-deep .mat-typography ::ng-deep .mat-body, ::ng-deep .mat-typography ::ng-deep .mat-body-1, ::ng-deep .mat-typography {
+    font-family: "Gellix", sans-serif !important;
+}
+
+ 
+
+/* button.disabled.ng-star-inserted:first-child {
+    border-color: #FFBE00 !important;
+background-color: #FFBE00 !important;
+}
+
+button.disabled.ng-star-inserted:nth-child(2) {
+     border-color: #e7345d !important;
+background-color: #e7345d !important;
+}
+button.disabled.ng-star-inserted:last-child {
+     border-color: #E93608 !important;
+background-color: #E93608 !important;
+} */
