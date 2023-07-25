@@ -116,31 +116,6 @@ export class ClubNewsComponent implements OnInit, OnDestroy {
     }
 
     /**
-    * Function is used to add click count for a the particular mobile or desktop Banner
-    * @author  MangoIt Solutions(M)
-    * @param   {BannerId}
-    * @return  {Object}
-    */
-    onClickBanner(bannerId: number) {
-        let displayMode: number
-        if (sessionStorage.getItem('token') && window.innerWidth < 768) {
-            //mobile
-            displayMode = 1;
-        } else {
-            //desktop
-            displayMode = 0;
-        }
-        let data = {
-            banner_id: bannerId,
-            user_id: this.userData.userId,
-            display_mode: displayMode
-        }
-        this.authService.memberSendRequest('post', 'bannerClick/', data)
-            .subscribe((respData: any) => {
-            })
-    }
-
-    /**
     * Function is used to get top 5 news for user
     * @author  MangoIt Solutions
     * @param   {userId}
@@ -193,6 +168,12 @@ export class ClubNewsComponent implements OnInit, OnDestroy {
         }
     }
 
+    /**
+    * Function is used to serialize the decode data
+    * @author  MangoIt Solutions
+    * @param   {newsid}
+    * @return  {Object}
+    */
     sendDecodeData(){
         const newJson = dataFormatter.serialize({
             stuff: this.newsResult, // can handle array
